@@ -6,14 +6,26 @@ var name = value;
 let name
 //l=
 let name = value;
+//la
+let name = await value;
+//ly
+let name = yield value;
 //co
 const name
 //co=
 const name = value;
-//fn0
+//ca
+const name = await value;
+//cy
+const name = yield value;
+//iife1
 (function (params) {
     statement
 })(params);
+//iife2
+(async (${1:arguments}) => {
+    ${0}
+})(${2});
 //fn1
 const name = (params) => {
     statement
@@ -49,6 +61,14 @@ function* (params) {
 //fn11
 function* name(params) {
 	yield statement;
+}
+//asf1
+async function (${1:arguments}) {
+    ${0}
+};
+//asf2
+async (${1:arguments}) => {
+    ${0}
 }
 //rq1
 const { name } = require('packageName');
@@ -110,16 +130,21 @@ if ( condition ) {
 	statement
 }
 //for1
-for (let i = 0; i < ar.length; i++) {
+for (let i = 0, len = ar.length; i < len; i++) {
     statement
 }
+//for (let ${1:i} = 0, ${2:len} = ${3:iterable}.length ${1:i} < ${2:len}; ${1:i}++) {
+//    ${0}
+//}
 //for2
 for(const e of ar) {
     statement
 }
 //for3
-for(const e in obj) {
-    statement
+for (let ${1:key} in ${2:source}) {
+    if (Object.prototype.hasOwnProperty(${2:source}, ${1:key})) {
+        ${0}
+    }
 }
 //tn1
 ${1:promise}.then((${2:value}) => {
@@ -133,8 +158,10 @@ ${1:promise}.then((${2:value}) => {
 console.log(statement);
 //clg2
 console.log(`${}`);
-//ter
-${condition} ? expression : expression;
+//te
+( condition ) ? expression1 : expression2;
+//te=
+const name = ( condition ) ? expression1 : expression2;
 //wl
 while ( condition ) {
 	statement
@@ -182,6 +209,12 @@ name.call(context, arg)
 }, 3:initValue);
 //fn
 1:arr.find(2:ele => 3:condition)
+//every
+1:arr.find(2:ele => 3:condition)
+//some
+1:arr.find(2:ele => 3:condition)
+//sort
+arr.sort((a, b) => a - b);
 //kv
 1:key : 2:value,
 //proto
@@ -203,13 +236,37 @@ exports.1:member = 2:statement;
 //me
 module.exports = 1:statement;
 //adde
-selector.addEventListener(event, handler)
+element.addEventListener(event, handler)
+//gi
+${1:document}.getElementById('${2:id}')
+//gc
+Array.from(${1:document}.getElementsByClassName('${2:class}'))
+//gt
+Array.from(${1:document}.getElementsByTagName('${2:tag}'))
 //qs
 element = document.querySelector(selectores);
+//qsa
+Array.from(${1:document}.querySelectorAll('${2:selector}'))
 //addc
 element.classList.add("mystyle");
+//togc
+${1:document}.classList.toggle('${2:class}');
 //rmc
 element.classList.remove("mystyle");
+//cdf
+${1:document}.createDocumentFragment(${2:elem});
+//cel
+${1:document}.createElement(${2:elem});
+//ac
+${1:document}.appendChild(${2:elem});
+//rmch
+${1:document}.removeChild(${2:elem});
+//ga
+${1:document}.getAttribute('${2:attr}');
+//sa
+${1:document}.setAttribute('${2:attr}', ${3:value});
+//rma
+${1:document}.removeAttribute('${2:attr}');
 //rt
 return
 //len
@@ -251,8 +308,87 @@ JSON.stringify(object)
 "use strict";
 //====
 Object.is(value1, value2)
-
-
+//sti
+setInterval((params) => {
+    statement
+}, interval);
+//sto
+setTimeout((params) => {
+    statement
+}, time);
+//inf1
+for(;;);
+//inf2
+while(true);
+//ol
+{ key: value }
+//of
+${1:functionName}: function(${2:arguments}) {
+	${3:// body}
+}
+//cb
+(err, ${1:response}) => {
+    if (err) throw err
+    ${0}
+}
+//ok
+Object.keys(${1:obj})
+//ov
+Object.values(${1:obj})
+//oe
+Object.entries(${1:obj})
+//oc
+Object.create(${1:obj})
+//oa
+Object.assign(${1:dest}, ${2:source})
+//opd
+Object.getOwnPropertyDescriptor(${1:dest}, '${2:prop}')
+//od
+Object.defineProperty(${1:dest}, '${2:prop}', {
+    ${0}
+})
+//pa
+Promise.all(${1:value})
+//apa
+await Promise.all(${1:value})
+//apm
+await Promise.all(${1:array}.map((async ${2:value}) => {\n\t${0}\n}))
+//epsr
+ev.preventDefault()
+ev.stopPropagation()
+return false
+//de
+debugger;
+//ih
+${1:document}.innerHTML = '${2:elem}';
+//f&g1
+const ${1:functionName} = async () => {
+    const response = await fetch('${2:URL}');
+    const data = await response.json();
+    console.log(data);
+};$0
+//f&g2
+const ${1:functionName} = async () => {
+    const response = await fetch('${2:URL}', {
+        method: '${3:*GET/POST/PUT/DELETE}',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const data = await response.json();
+    console.log(data);${0}
+};$0
+//f&g3
+const ${1:functionName} = async () => {
+    const response = await fetch('${2:URL}', {
+        method: '${3:*GET/POST/PUT/DELETE}',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const data = await response.json();
+    console.log(data);${0}
+};$0
 
 
 
